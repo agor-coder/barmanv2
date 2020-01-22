@@ -34,6 +34,7 @@ public class Barman {
             sc.nextLine();
             ing.add(new Ingredient(igrName, amount));
         }
+        sc.close();
 
     }
 
