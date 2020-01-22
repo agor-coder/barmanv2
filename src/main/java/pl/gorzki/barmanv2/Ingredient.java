@@ -36,6 +36,6 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return  "-"+name + "(" + amount +")";
+        return  "-"+name + "(" + amount +"ml)";
     }
 }
