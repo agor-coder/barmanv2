@@ -23,32 +23,43 @@ public class Barman {
 
     private static void fillList(ArrayList<Ingredient> ing) {
         Scanner sc = new Scanner(System.in);
-        boolean endRead = false;
-        while (!endRead) {
+        boolean endReadNumber = false;
+        boolean endReadIng = false;
+        int numberOfIngr = 0;
+
+        while (!endReadNumber) {
             try {
                 System.out.println("podaj liczbę składników:");
-                int numberOfIngr = sc.nextInt();
+                numberOfIngr = sc.nextInt();
                 sc.nextLine();
-
-                while (ing.size() < numberOfIngr) {
-                    System.out.printf("nazwa składnika %d:\n", ing.size() + 1);
-                    String igrName = sc.nextLine();
-                    System.out.println("ilość składnika:");
-                    int amount = sc.nextInt();
-                    sc.nextLine();
-                    ing.add(new Ingredient(igrName, amount));
-                }
-                endRead = true;
+                endReadNumber = true;
             } catch (InputMismatchException e) {
                 System.out.println("źle - jeszcze raz");
                 sc.nextLine();
             }
         }
-        sc.close();
+
+        while (ing.size() < numberOfIngr) {
+            try {
+                System.out.printf("nazwa składnika %d:\n", ing.size() + 1);
+                String igrName = sc.nextLine();
+                System.out.println("ilość składnika:");
+                int amount = sc.nextInt();
+                sc.nextLine();
+
+                ing.add(new Ingredient(igrName, amount));
+
+            } catch (InputMismatchException e) {
+                System.out.println("źle - jeszcze raz");
+                sc.nextLine();
+            }
+
+        }
+
     }
 
     public static void printDrink(Drink drink) {
-        if (drink.getIngredients().size() == 0) {
+        if (drink.getIngredients().isEmpty()) {
             System.out.println("nie ma drinka");
         } else {
             System.out.printf("Drink składa się z %d składników: \n", drink.getIngredients().size());
