@@ -24,7 +24,6 @@ public class Barman {
     private static void fillList(ArrayList<Ingredient> ing) {
         Scanner sc = new Scanner(System.in);
         boolean endReadNumber = false;
-        boolean endReadIng = false;
         int numberOfIngr = 0;
 
         while (!endReadNumber) {
